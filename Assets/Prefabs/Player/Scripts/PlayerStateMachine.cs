@@ -134,6 +134,7 @@ public class PlayerStateMachine : MonoBehaviour
                 }
                 else
                 {
+                    //Use coroutine to Wait before
                     _fallCoroutine = StartCoroutine(_coroutines.FallCoroutine(this));
                     //TransitionToState(PlayerState.FALL);
                 }   
