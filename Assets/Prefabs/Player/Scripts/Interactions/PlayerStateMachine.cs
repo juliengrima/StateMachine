@@ -9,21 +9,24 @@ using static UnityEditor.Rendering.InspectorCurveEditor;
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
-    [Header("Player_Components")]
-    [SerializeField] PlayerKeayboardControllers _playerController;
-    [SerializeField] CoroutinesStates _coroutines;
-    [SerializeField] Grounded _Grounded;
-    //[SerializeField] Interaction _interaction;
     [Header("Player_Controllers")]
     [SerializeField] InputActionReference _move;
     [SerializeField] InputActionReference _jump;
     [SerializeField] InputActionReference _crouch;
+    [Header("Player_Components")]
+    [SerializeField] EntityMove _entityMove;
+    [SerializeField] EntityJump _entityJump;
+    [SerializeField] EntityCrouch _entityCrouch;
+    //[SerializeField] CoroutinesStates _coroutines;
+    [SerializeField] Grounded _Grounded;
+    //[SerializeField] Interaction _interaction;
     [Header("Player_Animations")]
     [SerializeField] Animator _animator;
     //[Header("Player_Audios")]
     //[SerializeField] AudioSource _source;
     //[SerializeField] AudioClip _clip;
     //Private Fields
+    CoroutinesStates _coroutines;
     Coroutine _fallCoroutine;
     //Private Components
     int _fallWait;
@@ -49,7 +52,7 @@ public class PlayerStateMachine : MonoBehaviour
     void Awake()
     {
         //_animator = GetComponent<Animator>();
-        //_coroutines = GetComponent<CoroutinesStates>();
+        _coroutines = GetComponent<CoroutinesStates>();
     }
     void Start()
     {
@@ -129,8 +132,7 @@ public class PlayerStateMachine : MonoBehaviour
                     }
                     
                     //Interactions will come
-                    //Fire will come
-                    
+                    //Fire will come    
                 }
                 else
                 {
@@ -151,7 +153,7 @@ public class PlayerStateMachine : MonoBehaviour
                         TransitionToState(PlayerState.CROUCH);
                     }
 
-                    _playerController.Move(_move);
+                    _entityMove.Move(_move);
                     //Interactions will come
                     //Fire will come
                 }
@@ -199,7 +201,7 @@ public class PlayerStateMachine : MonoBehaviour
                         TransitionToState(PlayerState.IDLE);
                     }
                     //Debug.Log(" Go to Jump() Method");
-                    _playerController.Jump(_jump);
+                    //_entityJump.Jump(_jump);
                 }
                 else
                 {
@@ -221,15 +223,15 @@ public class PlayerStateMachine : MonoBehaviour
                 }
                 break;
             case PlayerState.FALL:
-                var falling = _playerController.Rb.velocity.y;
-                if (falling < 3000)
-                {
-                    TransitionToState(PlayerState.IDLE);
-                }
-                else
-                {
-                    TransitionToState(PlayerState.DEATH);
-                }
+                //var falling = _entityMove.Rb.velocity.y;
+                //if (falling < 3000)
+                //{
+                //    TransitionToState(PlayerState.IDLE);
+                //}
+                //else
+                //{
+                //    TransitionToState(PlayerState.DEATH);
+                //}
                 break;
             case PlayerState.DEATH:
 
