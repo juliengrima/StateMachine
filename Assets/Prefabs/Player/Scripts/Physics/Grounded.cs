@@ -18,7 +18,8 @@ public class Grounded : MonoBehaviour
     private void Reset()
     {
         _isGrounded = false;
-        _rayDistance = 1f;
+        _rayDistance = 0.3f;
+        _player = transform.parent.GetComponentInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class Grounded : MonoBehaviour
     {
         // Assurez-vous que la valeur Y est légèrement au-dessus du sol
         //Make sure Y value is is slightly above the ground
-        Vector3 rayStart = transform.position + Vector3.up * -0.1f;
+        Vector3 rayStart = transform.position;
         // Lance un rayon vers le bas
         //Make Ray DownWard
         if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit hit, _rayDistance))

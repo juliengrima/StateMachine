@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EntityJump : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class EntityJump : MonoBehaviour
     [Header("Fieds")]
     [SerializeField] float _jumpHeight;
     //Private Fields
-    bool _isCrouchIsPressed, _isJumpIsPressed;
+    bool _isJumpIsPressed;
     //Setter - Getter
     public Rigidbody Rb { get => _rb; }
     #endregion
@@ -19,32 +20,17 @@ public class EntityJump : MonoBehaviour
     // Start is called before the first frame update
     private void Reset()
     {
-        _jumpHeight = 500f;
+        _jumpHeight = 200f;
+        _rb = transform.parent.GetComponentInChildren<Rigidbody>();
     }
-    void Awake()
-    {
-        
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
     #endregion
     #region Methods
-    void FixedUpdate ()
-    {
-        Rb.AddForce(Vector2.up * _jumpHeight);
-    }
     public void Jump(InputActionReference _jump)
     {
         _isJumpIsPressed = _jump.action.WasPerformedThisFrame();
-        //Debug.Log("Add Force to Rb Player");    
+        //Debug.Log("Add Force to Rb Player");
+        Rb.AddForce(Vector2.up * _jumpHeight);
     }
     #endregion
     #region Coroutines

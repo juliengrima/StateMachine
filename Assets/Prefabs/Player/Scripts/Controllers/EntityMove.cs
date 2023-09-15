@@ -7,6 +7,7 @@ public class EntityMove : MonoBehaviour
 {
     #region Champs
     [Header("Components")]
+    [SerializeField] GameObject _player;
     [SerializeField] Rigidbody _rb;
     //[SerializeField] Grounded _grounded;
     [Header("Fieds")]
@@ -24,6 +25,7 @@ public class EntityMove : MonoBehaviour
     private void Reset()
     {
         _speed = 1000f;
+        _rb = transform.parent.GetComponentInChildren<Rigidbody>();
     }
    
     void Start()
@@ -36,6 +38,7 @@ public class EntityMove : MonoBehaviour
     #region Methods
     void FixedUpdate ()
     {
+        //Move camera on X / Z 
         Vector3 camera = new Vector3(_camera.forward.x, 0f, _camera.forward.z);
         // use the camera's X direction to the player
         Vector3 forwardBackward = camera * _direction.y;
@@ -46,10 +49,12 @@ public class EntityMove : MonoBehaviour
         // PLayer look on the camera direction
         if (move != Vector3.zero)
         {
-            gameObject.transform.forward = camera;
+            _player.transform.forward = camera;
         }
-
-        Rb.velocity = move * _speed * Time.deltaTime;
+        //variable direction du vector2
+        var dir = move * _speed * Time.deltaTime;
+        // Velocity of vector2 with y velocity
+        Rb.velocity = new Vector3(dir.x, Rb.velocity.y, dir.z);
     }
     public void Move(InputActionReference _move)
     {

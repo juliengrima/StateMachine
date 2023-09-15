@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerFire : MonoBehaviour
-{	
+{
     #region Champs
+    bool _isFireIsPressed;
     #endregion
     #region Unity LifeCycle
     // Start is called before the first frame update
@@ -24,13 +26,9 @@ public class PlayerFire : MonoBehaviour
     }
     #endregion
     #region Methods
-    void FixedUpdate ()
+    public void Fire(InputActionReference _fire)
     {
-        
-    }
-    void LateUpdate ()
-    {
-        
+        _isFireIsPressed = _fire.action.WasPressedThisFrame();
     }
     #endregion
     #region Coroutines
