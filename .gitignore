@@ -7,7 +7,6 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-[Ss]cenes/*
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
@@ -68,7 +67,6 @@ crashlytics-build.properties
 
 /_Build
 /Assets/StreamingAssets/PlayerLog
-/Assets/Scenes/
 /.vsconfig
 /UserSettings
 /.idea
