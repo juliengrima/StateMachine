@@ -11,7 +11,8 @@ public class ExitLevel : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+
+        if (other.attachedRigidbody.gameObject.CompareTag("Player"))
         {
             // Chargez la scène actuelle à nouveau
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
