@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Exit : MonoBehaviour
+public class Dectection : MonoBehaviour
 {
     #region Champs
     #endregion
