@@ -140,12 +140,7 @@ public class PlayerStateMachine : MonoBehaviour
                         //Debug.Log("Is Jumping");
                         TransitionToState(PlayerState.JUMP);
                     }
-                    else if (_crouch.action.WasPerformedThisFrame())
-                    {
-                        //Debug.Log("Is crouching");
-                        TransitionToState(PlayerState.CROUCH);
-                    }
-
+                    
                     _interactions.Interations();
                     //Fire will come    
                 }
@@ -211,6 +206,11 @@ public class PlayerStateMachine : MonoBehaviour
                     {
                         TransitionToState(PlayerState.JUMP);
                     }
+
+                    if (_crouch.action.WasPerformedThisFrame())
+                    {
+                        TransitionToState(PlayerState.CROUCH);
+                    }
                     _entityMove.Move(_move);
                     //Fire will come
                 }
@@ -249,11 +249,14 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerState.CROUCH:
                 if (_Grounded.IsGrounded)
                 {
-                    if (_crouch.action.WasPerformedThisFrame())
+                    var dir = _move.action.ReadValue<Vector2>();
+                    if (dir.magnitude <= 0.05f)
                     {
                         TransitionToState(PlayerState.IDLE);
                     }
+                    
                     //Fire Will come
+                    _entityMove.Crouch(_crouch);
                 }
                 else
                 {

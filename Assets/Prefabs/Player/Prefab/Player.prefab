@@ -113,7 +113,7 @@ Transform:
   - {fileID: 6321266774633330874}
   - {fileID: 5477316499921174967}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8021940742656131717
 Rigidbody:
@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 6321266774633330874}
   - component: {fileID: 5819516613548742314}
   - component: {fileID: 8725927508845225255}
-  - component: {fileID: 1445675348958936572}
   m_Layer: 7
   m_Name: Action
   m_TagString: Untagged
@@ -325,6 +324,7 @@ MonoBehaviour:
   _player: {fileID: 2408228256525967544}
   _rb: {fileID: 8021940742656131717}
   _speed: 1000
+  _speedCrouch: 250
 --- !u!114 &8725927508845225255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,20 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 8021940742656131717}
-  _jumpHeight: 200
---- !u!114 &1445675348958936572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2690263299344615765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fc2750fd65c64472a51dcfec3487e9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 8021940742656131717}
+  _jumpHeight: 300
 --- !u!1 &4566275388675149780
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,9 +389,9 @@ MonoBehaviour:
   _crouch: {fileID: 5171616712737216419, guid: a4529123ba51b4871ba2605a7f2b7d91, type: 3}
   _entityMove: {fileID: 5819516613548742314}
   _entityJump: {fileID: 8725927508845225255}
-  _entityCrouch: {fileID: 1445675348958936572}
+  _entityCrouch: {fileID: 0}
   _coroutines: {fileID: 1474863318527362847}
-  _Grounded: {fileID: 0}
+  _Grounded: {fileID: 899404552806284727}
   _interactions: {fileID: 837812158191289219}
   _animator: {fileID: 37108807711934324}
 --- !u!114 &1474863318527362847
@@ -496,7 +483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ea013d065d04e9c9465aa9e00cf49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 8021940742656131717}
   _isGrounded: 0
   _rayDistance: 0.1
   _colliderList:

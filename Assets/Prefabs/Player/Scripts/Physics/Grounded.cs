@@ -7,7 +7,7 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 public class Grounded : MonoBehaviour
 {
     #region Champs
-    [SerializeField] Rigidbody _player;
+    //[SerializeField] Rigidbody _player;
     [SerializeField] bool _isGrounded;
     [SerializeField] float _rayDistance;
     [SerializeField] List<string> _colliderList;
@@ -20,7 +20,7 @@ public class Grounded : MonoBehaviour
     {
         _isGrounded = false;
         _rayDistance = 0.3f;
-        _player = transform.parent.GetComponentInChildren<Rigidbody>();
+        //_player = transform.parent.GetComponentInChildren<Rigidbody>();
     }
 
     // Update is called once per frame

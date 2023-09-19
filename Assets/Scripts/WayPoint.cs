@@ -11,12 +11,14 @@ public class WayPoint : MonoBehaviour
  
     private int currentWaypointIndex = 0; // Index du point de passage actuel
 
+    public float Speed { get => _speed; set => _speed = value; }
+
     #endregion
     #region Unity LifeCycle
     // Start is called before the first frame update
     private void Reset()
     {
-        _speed = 2f;
+        Speed = 2f;
         //_distance = 0.5f;
     }
     void Awake()
@@ -50,7 +52,7 @@ public class WayPoint : MonoBehaviour
 
         // Déplacer le GameObject vers le waypoint actuel
         Vector3 targetPosition = _waypoints[currentWaypointIndex].position;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Speed * Time.deltaTime);
     }
     #endregion
     #region Methods

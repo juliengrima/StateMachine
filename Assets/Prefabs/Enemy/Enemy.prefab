@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6716756228468455972}
   - component: {fileID: 8818872675445306069}
   - component: {fileID: 5172520756906231147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,10 +128,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2981467084663033743}
   - component: {fileID: 5768415585900343289}
-  - component: {fileID: 8288416134103933355}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +150,7 @@ Transform:
   - {fileID: 6716756228468455972}
   - {fileID: 969237905416348083}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5768415585900343289
 MonoBehaviour:
@@ -169,18 +168,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _speed: 5
---- !u!114 &8288416134103933355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070941177182946539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434a28b68975945bba0cf63c2030bf6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8822903448239500330
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +180,8 @@ GameObject:
   - component: {fileID: 1939273815467401070}
   - component: {fileID: 1465478421499437602}
   - component: {fileID: 6523790069935990708}
-  m_Layer: 0
+  - component: {fileID: 6357374812668188226}
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8822903448239500330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.589, z: 0}
+  m_LocalPosition: {x: 0, y: -2.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -286,3 +274,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.73638624
   m_Center: {x: -0.029088974, y: 0.06789678, z: 0}
+--- !u!114 &6357374812668188226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822903448239500330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434a28b68975945bba0cf63c2030bf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entityMove: {fileID: 0}
+  _waypoints: {fileID: 5768415585900343289}
+  _wait: 10
+  _checkSpeed: 2
