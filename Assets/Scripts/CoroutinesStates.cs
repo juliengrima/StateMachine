@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CoroutinesStates : MonoBehaviour
 {
@@ -11,6 +10,20 @@ public class CoroutinesStates : MonoBehaviour
         //throw new NotImplementedException();
         yield return new WaitForSeconds(playerState.FallWait);
         playerState.TransitionToState(PlayerStateMachine.PlayerState.FALL);
+    }
+
+   public IEnumerator CheckPlayer(float wait, Light light, Color reset)
+    {
+        // Changez la couleur du spotlight
+        light.color = reset; // Par exemple, changez la couleur en rouge
+        yield return new WaitForSeconds(wait);
+    }
+
+    public IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(5);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
     #endregion
 }

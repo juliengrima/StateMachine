@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static PlayerStateMachine;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -86,8 +81,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
 
     }
-    #endregion
-    #region Coroutines
     #endregion
     #region States
     void OnStateEnter()
@@ -316,5 +309,7 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState = nextState;
         OnStateEnter();
     }
+    #endregion
+    #region Coroutines
     #endregion
 }
