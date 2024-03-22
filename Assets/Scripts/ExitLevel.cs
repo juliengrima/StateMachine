@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +7,10 @@ public class ExitLevel : MonoBehaviour
     #endregion
     #region Unity LifeCycle
     // Start is called before the first frame update
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collision)
     {
-        if (other.CompareTag("Player"))
+
+        if (collision.attachedRigidbody.gameObject.CompareTag("Player"))
         {
             // Chargez la scène actuelle à nouveau
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

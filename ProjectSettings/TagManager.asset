@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
+  - Item
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -14,6 +17,7 @@ TagManager:
   - UI
   - 
   - Player
+  - Enemy
   - 
   - 
   - 
@@ -36,8 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Item
   m_SortingLayers:
   - name: Default
     uniqueID: 0

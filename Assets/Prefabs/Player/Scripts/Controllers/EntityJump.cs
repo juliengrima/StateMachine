@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EntityJump : MonoBehaviour
 {
@@ -23,9 +20,13 @@ public class EntityJump : MonoBehaviour
         _jumpHeight = 200f;
         _rb = transform.parent.GetComponentInChildren<Rigidbody>();
     }
-   
+
     #endregion
     #region Methods
+    private void FixedUpdate()
+    {
+        
+    }
     public void Jump(InputActionReference _jump)
     {
         _isJumpIsPressed = _jump.action.WasPerformedThisFrame();

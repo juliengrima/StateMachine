@@ -9,6 +9,7 @@ public class Interactions : MonoBehaviour
     #region Champs
     [Header("Components")]
     [SerializeField] InputActionReference _action;
+    [SerializeField] List<string> _tags;
     [Header("Fields")]
     [SerializeField] float _rayDistance;
 
@@ -31,33 +32,35 @@ public class Interactions : MonoBehaviour
     public void Interations()
     {
         Vector3 rayStart = transform.position;
-        //Vector3 rayStart = transform.position + Vector3.forward * 0.7f;
 
         if (Physics.Raycast(rayStart, _player.forward, out RaycastHit hit, _rayDistance))
         {
-            // Si le rayon touche un objet avec le tag "Ground" (ou un autre tag que vous utilisez pour représenter le sol),
-            // définissez _isGrounded sur true.
-            if (hit.collider.CompareTag("Enemy"))
+            //Loop to list more tags
+            foreach (string tags in _tags)
             {
-                Debug.Log($"Touché {hit.collider.name}");
-                var hited = hit.collider.name;
-                // Affichage du nom de l'item par Canvas
-                if (_action.action.WasPerformedThisFrame())
+                //test if collider tag = tags list
+                if (hit.collider.tag == tags)
                 {
-                    bool action = _action.action.WasPerformedThisFrame();
-                    if (hit.collider.TryGetComponent(out IInteractable usable))
+                    Debug.Log($"Touché {hit.collider.name}");
+                    var hited = hit.collider.name;
+                    // Affichage du nom de l'item par Canvas
+                    if (_action.action.WasPerformedThisFrame())
                     {
-                        usable.Use(action);
+                        bool action = _action.action.WasPerformedThisFrame();
+                        if (hit.collider.TryGetComponent(out IInteractable usable))
+                        {
+                            usable.Use(action);
+                        }
                     }
+                    _use = true;
+                    Debug.DrawRay(rayStart, _player.forward * _rayDistance, Color.HSVToRGB(108, 52, 131));
                 }
-                _use = true;
-                Debug.DrawRay(rayStart, _player.forward * _rayDistance, Color.HSVToRGB(108, 52, 131));
-            }
-            else
-            {
-                _use = false;
-                Debug.DrawRay(rayStart, _player.forward * _rayDistance, Color.red);
-            }
+                else
+                {
+                    _use = false;
+                    Debug.DrawRay(rayStart, _player.forward * _rayDistance, Color.red);
+                }
+            } 
         }
         else
         {
